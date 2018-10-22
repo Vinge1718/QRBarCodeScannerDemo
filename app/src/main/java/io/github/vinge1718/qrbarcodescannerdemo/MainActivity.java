@@ -64,13 +64,30 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                                 displayAlertMessage("You need to allow access for both  permissions", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        requestPermissions(new String[]{CAMERA}, REQUEST_CAMERA );
+                                        requestPermissions(new String[]{CAMERA}, REQUEST_CAMERA);
                                     }
                                 });
+                                return;
                             }
                         }
                     }
                 }
+                break;
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if(checkPermission())
+            {
+                if (scannerView == null)
+                    scannerView =new ZXingScannerView(this);
+                setContentView(scannerView);
+            }
+            scannerView.setResultHandler(this);
+            scannerView.startCamera();
         }
     }
 
