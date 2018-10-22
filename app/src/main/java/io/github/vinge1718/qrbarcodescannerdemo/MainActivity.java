@@ -91,6 +91,12 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         }
     }
 
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        scannerView.stopCamera();
+    }
+
     public void displayAlertMessage(String message, DialogInterface.OnClickListener listener){
         new AlertDialog.Builder(MainActivity.this)
                 .setMessage(message)
