@@ -61,7 +61,12 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                         Toast.makeText(MainActivity.this, "Permissions Denied", Toast.LENGTH_LONG).show();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                             if(shouldShowRequestPermissionRationale(CAMERA)){
-
+                                displayAlertMessage("You need to allow access for both  permissions", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        requestPermissions(new String[]{CAMERA}, REQUEST_CAMERA );
+                                    }
+                                });
                             }
                         }
                     }
