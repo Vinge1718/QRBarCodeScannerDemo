@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                 startActivity(intent);
             }
         });
-
+        builder.setMessage(scanResult);
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
