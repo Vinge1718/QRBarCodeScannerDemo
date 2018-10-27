@@ -122,7 +122,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         builder.setNeutralButton("Check Details", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(scanResult));
+                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                intent.putExtra("scan-result", scanResult);
                 startActivity(intent);
             }
         });
