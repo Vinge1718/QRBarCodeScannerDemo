@@ -24,18 +24,22 @@ public class StudentService {
         call.enqueue(callback);
     }
 
-    public ArrayList<Student> processResults(Response response){
-        ArrayList<Student> students = new ArrayList<>();
-        
+    public ArrayList processResults(Response response){
+        ArrayList<String> studentDetails = new ArrayList<>();
+
         try{
             String jsonData = response.body().string();
             JSONObject users = new JSONObject(jsonData);
 
-            String studentName = users.getString("name");
-            String studentClass = users.getString("class");
-            String imageUrl = users.getString("image");
-            Student student = new Student(studentName, studentClass, imageUrl);
-            students.add(student);
+
+            String studentName = users.getJSONObject("users").getString("name");
+            studentDetails.add(studentName);
+            String studentClass = users.getJSONObject("users").getString("class");
+            studentDetails.add(studentClass);
+            String imageUrl = users.getJSONObject("users").getString("image");
+            studentDetails.add(imageUrl);
+
+//            Student student = new Student(studentName, studentClass, imageUrl);
 
         } catch (IOException e){
             e.printStackTrace();
@@ -43,6 +47,6 @@ public class StudentService {
             e.printStackTrace();
         }
 
-        return students;
+        return studentDetails;
     }
 }
