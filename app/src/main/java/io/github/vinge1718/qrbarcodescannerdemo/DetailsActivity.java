@@ -4,25 +4,32 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class DetailsActivity extends AppCompatActivity {
-    private TextView mDetailsTextView;
+    @BindView(R.id.detailsTextView) TextView mDetailsTextView;
+    @BindView(R.id.detailsListView) ListView mDetailsListView;
+
     public static final String TAG = DetailsActivity.class.getSimpleName();
-    public ArrayList<Student> mStudentDetails = new ArrayList<>();
+    public ArrayList<String> mStudentDetails = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        mDetailsTextView = findViewById(R.id.detailsTextView);
+        ButterKnife.bind(this);
+
         Intent intent = getIntent();
         String scanResult = intent.getStringExtra("scan-result");
         mDetailsTextView.setText("The students Id is " + scanResult);
@@ -39,14 +46,26 @@ public class DetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try{
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                    mStudentDetails = studentService.processResults(response);
-                } catch (IOException e){
-                    e.printStackTrace();
-                }
+            public void onResponse(Call call, Response response) {
+                mStudentDetails = studentService.processResults(response);
+                DetailsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        String[] studentStuff = new String[mStudentDetails.size()];
+                        for (int i = 0; i < studentStuff.length; i++){
+                            studentStuff[i] = mStudentDetails.get(i);
+                        }
+
+                        ArrayAdapter adapter = new ArrayAdapter(DetailsActivity.this, android.R.layout.simple_list_item_1, studentStuff);
+                        mDetailsListView.setAdapter(adapter);
+//                        mStudentNameTextView = findViewById(R.id.studentName) ;
+//                        mStudentNameTextView.setText(studentName);
+//                        mClassName = findViewById(R.id.studentClass);
+//                        String studentClass = mStudentDetails.get(1);
+//                        mClassName.setText(studentClass);
+                    }
+                });
             }
         });
     }
