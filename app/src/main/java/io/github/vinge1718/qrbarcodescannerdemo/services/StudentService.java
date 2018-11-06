@@ -32,12 +32,11 @@ public class StudentService {
             String jsonData = response.body().string();
             JSONObject users = new JSONObject(jsonData);
 
-
+            String imageUrl = users.getJSONObject("users").getString("image");
             String studentName = users.getJSONObject("users").getString("name");
             String studentClass = users.getJSONObject("users").getString("class");
-            String imageUrl = users.getJSONObject("users").getString("image");
 
-            Student student = new Student(studentName, studentClass, imageUrl);
+            Student student = new Student(imageUrl, studentName, studentClass);
             studentDetails.add(student);
 
         } catch (IOException e){
