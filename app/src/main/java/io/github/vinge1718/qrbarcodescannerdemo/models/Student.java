@@ -5,10 +5,14 @@ public class Student {
     private String mImageUrl;
     private String mClass;
 
-    public Student(String studentName, String imageUrl, String studentClass){
+    public Student(String imageUrl, String studentName,  String studentClass){
+        this.mImageUrl = imageUrl;
         this.mName = studentName;
         this.mClass = studentClass;
-        this.mImageUrl = imageUrl;
+    }
+
+    public String getImageUrl(){
+        return mImageUrl;
     }
 
     public String getStudentName(){
@@ -17,9 +21,5 @@ public class Student {
 
     public String getClasses(){
         return mClass;
-    }
-
-    public String getImageUrl(){
-        return mImageUrl;
     }
 }
