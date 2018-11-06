@@ -1,9 +1,8 @@
-package io.github.vinge1718.qrbarcodescannerdemo;
+package io.github.vinge1718.qrbarcodescannerdemo.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,6 +12,9 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.vinge1718.qrbarcodescannerdemo.R;
+import io.github.vinge1718.qrbarcodescannerdemo.models.Student;
+import io.github.vinge1718.qrbarcodescannerdemo.services.StudentService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -22,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.detailsListView) ListView mDetailsListView;
 
     public static final String TAG = DetailsActivity.class.getSimpleName();
-    public ArrayList<String> mStudentDetails = new ArrayList<>();
+    public ArrayList<Student> mStudentDetails = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class DetailsActivity extends AppCompatActivity {
 
                         String[] studentStuff = new String[mStudentDetails.size()];
                         for (int i = 0; i < studentStuff.length; i++){
-                            studentStuff[i] = mStudentDetails.get(i);
+                            studentStuff[i] = mStudentDetails.get(i).getStudentName();
                         }
 
                         ArrayAdapter adapter = new ArrayAdapter(DetailsActivity.this, android.R.layout.simple_list_item_1, studentStuff);
