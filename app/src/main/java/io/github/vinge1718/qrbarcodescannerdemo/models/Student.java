@@ -1,4 +1,4 @@
-package io.github.vinge1718.qrbarcodescannerdemo;
+package io.github.vinge1718.qrbarcodescannerdemo.models;
 
 public class Student {
     private String mName;
