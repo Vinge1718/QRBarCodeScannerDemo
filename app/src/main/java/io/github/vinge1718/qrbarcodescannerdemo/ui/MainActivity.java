@@ -1,12 +1,9 @@
-package io.github.vinge1718.qrbarcodescannerdemo;
+package io.github.vinge1718.qrbarcodescannerdemo.ui;
 
-import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
