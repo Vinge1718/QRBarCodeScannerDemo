@@ -4,15 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity">
+    tools:context=".ui.DetailsActivity">
 
     <TextView
         android:id="@+id/detailsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Url comes here"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="Some Text comes here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/detailsListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/studentName"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="2dp"-->
+    <!--android:layout_marginLeft="2dp"-->
+    <!--android:layout_marginTop="32dp"-->
+    <!--android:text="Student Name"-->
+    <!--app:layout_constraintStart_toStartOf="@+id/detailsTextView"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/detailsTextView" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/studentClass"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="28dp"-->
+    <!--android:layout_marginLeft="28dp"-->
+    <!--android:layout_marginTop="25dp"-->
+    <!--android:text="class"-->
+    <!--app:layout_constraintStart_toStartOf="@+id/studentName"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/studentName" />-->
+
 </android.support.constraint.ConstraintLayout>
