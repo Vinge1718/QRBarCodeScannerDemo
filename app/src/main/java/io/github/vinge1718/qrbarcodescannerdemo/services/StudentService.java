@@ -1,4 +1,4 @@
-package io.github.vinge1718.qrbarcodescannerdemo;
+package io.github.vinge1718.qrbarcodescannerdemo.services;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import io.github.vinge1718.qrbarcodescannerdemo.models.Student;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -25,7 +26,7 @@ public class StudentService {
     }
 
     public ArrayList processResults(Response response){
-        ArrayList<String> studentDetails = new ArrayList<>();
+        ArrayList<Student> studentDetails = new ArrayList<>();
 
         try{
             String jsonData = response.body().string();
@@ -33,13 +34,11 @@ public class StudentService {
 
 
             String studentName = users.getJSONObject("users").getString("name");
-            studentDetails.add(studentName);
             String studentClass = users.getJSONObject("users").getString("class");
-            studentDetails.add(studentClass);
             String imageUrl = users.getJSONObject("users").getString("image");
-            studentDetails.add(imageUrl);
 
-//            Student student = new Student(studentName, studentClass, imageUrl);
+            Student student = new Student(studentName, studentClass, imageUrl);
+            studentDetails.add(student);
 
         } catch (IOException e){
             e.printStackTrace();
