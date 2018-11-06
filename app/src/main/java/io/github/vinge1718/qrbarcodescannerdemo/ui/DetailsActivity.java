@@ -3,6 +3,8 @@ package io.github.vinge1718.qrbarcodescannerdemo.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.vinge1718.qrbarcodescannerdemo.R;
+import io.github.vinge1718.qrbarcodescannerdemo.adapters.StudentDetailsListAdapter;
 import io.github.vinge1718.qrbarcodescannerdemo.models.Student;
 import io.github.vinge1718.qrbarcodescannerdemo.services.StudentService;
 import okhttp3.Call;
@@ -21,7 +24,8 @@ import okhttp3.Response;
 
 public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.detailsTextView) TextView mDetailsTextView;
-    @BindView(R.id.detailsListView) ListView mDetailsListView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    private StudentDetailsListAdapter mAdapter;
 
     public static final String TAG = DetailsActivity.class.getSimpleName();
     public ArrayList<Student> mStudentDetails = new ArrayList<>();
@@ -54,18 +58,11 @@ public class DetailsActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        String[] studentStuff = new String[mStudentDetails.size()];
-                        for (int i = 0; i < studentStuff.length; i++){
-                            studentStuff[i] = mStudentDetails.get(i).getStudentName();
-                        }
-
-                        ArrayAdapter adapter = new ArrayAdapter(DetailsActivity.this, android.R.layout.simple_list_item_1, studentStuff);
-                        mDetailsListView.setAdapter(adapter);
-//                        mStudentNameTextView = findViewById(R.id.studentName) ;
-//                        mStudentNameTextView.setText(studentName);
-//                        mClassName = findViewById(R.id.studentClass);
-//                        String studentClass = mStudentDetails.get(1);
-//                        mClassName.setText(studentClass);
+                        mAdapter = new StudentDetailsListAdapter(getApplicationContext(),mStudentDetails);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DetailsActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
