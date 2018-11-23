@@ -5,12 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,11 +29,12 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DetailsActivity extends AppCompatActivity {
-    @BindView(R.id.detailsTextView) TextView mDetailsTextView;
+public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
+//    @BindView(R.id.detailsTextView) TextView mDetailsTextView;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    private StudentDetailsListAdapter mAdapter;
+    @BindView(R.id.timeButton) Button mTimeButton;
 
+    private StudentDetailsListAdapter mAdapter;
     public static final String TAG = DetailsActivity.class.getSimpleName();
     public ArrayList<Student> mStudentDetails = new ArrayList<>();
 
@@ -38,8 +46,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String scanResult = intent.getStringExtra("scan-result");
-        mDetailsTextView.setText("The students Id is " + scanResult);
+//        mDetailsTextView.setText("The students Id is " + scanResult);
         getDetails(scanResult);
+        mTimeButton.setOnClickListener(this);
     }
 
     public void getDetails(String scanResult){
@@ -67,5 +76,24 @@ public class DetailsActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public void onClick(View v){
+        if (v == mTimeButton ) {
+            Intent scanIntent = getIntent();
+            String scanResult = scanIntent.getStringExtra("scan-result");
+
+
+            TimeZone tz = TimeZone.getTimeZone("GMT+3:00");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+            df.setTimeZone(tz);
+            String nowAsISO = df.format(new Date());
+            Intent intent = new Intent(DetailsActivity.this, TimeConfirmation.class);
+            intent.putExtra("dtTime", nowAsISO);
+            intent.putExtra("studentId", scanResult);
+
+            startActivity(intent);
+        }
     }
 }
