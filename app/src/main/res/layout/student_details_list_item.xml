@@ -2,14 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dp">
 
+    <TextView
+        android:id="@+id/detailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="The student ID comes here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-        android:layout_width="230dp"
-        android:layout_height="200dp"
         android:id="@+id/studentImageView"
-        android:scaleType="centerCrop"/>
+        android:layout_width="230sp"
+        android:layout_height="200sp"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -41,18 +52,34 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="100sp">
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirm time"
-            android:id="@+id/timeButton"
+            android:id="@+id/arrivalTime"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Time"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentLeft="true"
+            android:padding="5sp"/>
+
+        <TextView
+            android:id="@+id/arrivalDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/colorPrimary"/>
-
-
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="0dp"
+            android:padding="5sp"
+            android:text="Date"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
