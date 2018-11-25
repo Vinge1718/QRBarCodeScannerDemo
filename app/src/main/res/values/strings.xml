@@ -1,9 +1,34 @@
 <resources>
 
     <string-array name="planets_array">
+        <item>MPFT1</item>
+        <item>MPFT2</item>
+        <item>MPFT3</item>
+        <item>MPFT4</item>
+        <item>MPFT5</item>
+        <item>MPFT6</item>
+        <item>MPFT7</item>
+        <item>MPFT8</item>
+        <item>MPFT9</item>
+        <item>MPFT10</item>
+        <item>MPFT11</item>
+        <item>MPFT12</item>
+        <item>MPFT13</item>
+        <item>MPFT14</item>
+        <item>MC1</item>
+        <item>MC2</item>
         <item>MC3</item>
-        <item>MPFT19</item>
+        <item>MC4</item>
+        <item>MC5</item>
+        <item>MC6</item>
         <item>MC7</item>
+        <item>MC8</item>
+        <item>MC9</item>
+        <item>MC10</item>
+        <item>MC11</item>
+        <item>MC12</item>
+        <item>MC13</item>
+        <item>MC14</item>
     </string-array>
 
     <string name="app_name">QR Bar Code Scanner Demo</string>

@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DetailsActivity" />
-        <activity android:name=".ui.TimeConfirmation"></activity>
+        <activity android:name=".ui.TimeConfirmation" />
+        <activity android:name=".ui.FilteredResults"></activity>
     </application>
 
 </manifest>

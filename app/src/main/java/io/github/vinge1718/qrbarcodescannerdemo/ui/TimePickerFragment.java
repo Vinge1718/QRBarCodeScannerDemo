@@ -5,9 +5,12 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
+
+import io.github.vinge1718.qrbarcodescannerdemo.R;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener  {
 
@@ -24,6 +27,14 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // Do something with the time chosen by the user
+
+        String timePicked =  new StringBuilder()
+                // Month is 0 based, just add 1
+                .append(hourOfDay).append("").append("0"+minute).append(" ")
+                .append("hrs").append(" ").toString();
+
+        TextView setDate = (TextView)getActivity().findViewById(R.id.timeTextView);
+        setDate.setText("Time due for search?: "+timePicked);
     }
 
 
