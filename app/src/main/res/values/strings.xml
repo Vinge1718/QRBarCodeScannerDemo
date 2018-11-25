@@ -1,3 +1,11 @@
 <resources>
+
+    <string-array name="planets_array">
+        <item>MC3</item>
+        <item>MPFT19</item>
+        <item>MC7</item>
+    </string-array>
+
     <string name="app_name">QR Bar Code Scanner Demo</string>
+
 </resources>

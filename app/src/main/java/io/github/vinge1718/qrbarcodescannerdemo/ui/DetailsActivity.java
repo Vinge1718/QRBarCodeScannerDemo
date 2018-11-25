@@ -30,7 +30,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
-//    @BindView(R.id.detailsTextView) TextView mDetailsTextView;
+    @BindView(R.id.timeTextView) TextView mDetailsTextView;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.timeButton) Button mTimeButton;
 
@@ -46,7 +46,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = getIntent();
         String scanResult = intent.getStringExtra("scan-result");
-//        mDetailsTextView.setText("The students Id is " + scanResult);
+        mDetailsTextView.setText("The students Id is " + scanResult);
         getDetails(scanResult);
         mTimeButton.setOnClickListener(this);
     }
@@ -71,7 +71,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DetailsActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
+//                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
