@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10sp">
+
+    <ImageView
+        android:id="@+id/userImageView"
+        android:layout_width="172dp"
+        android:layout_height="155dp"
+        android:padding="5sp"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+        <TextView
+            android:id="@+id/studentNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:textSize="10sp"
+            android:text="Student Name"
+            android:textColor="@color/colorPrimary"
+             />
+
+        <TextView
+            android:id="@+id/filteredIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:textSize="10sp"
+            android:layout_marginBottom="5sp"
+            android:text="The student ID is: " />
+
+
+        <TextView
+            android:id="@+id/classTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5sp"
+            android:padding="5sp"
+            android:text="Students Class"
+            android:textSize="10sp"
+             />
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5sp"
+            android:padding="5sp"
+            android:text="Students Email"
+            android:textSize="10sp"
+            />
+
+        <TextView
+            android:id="@+id/roleNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:text="Students Time In"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:background="@color/colorGreenAccent"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

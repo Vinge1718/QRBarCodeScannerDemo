@@ -1,20 +1,24 @@
 package io.github.vinge1718.qrbarcodescannerdemo.models;
 
-public class Student {
+public class FinalStudent {
     String mAvatarUrl;
     String mClass;
     String mEmail;
     String mRoleName;
+    String mTimeIn;
     int mUserId;
     String mUserName;
 
-    public Student(String avatarUrl, String studentClass, String email, String roleName, int userId, String userName){
+    public FinalStudent(String avatarUrl, String studentClass, String email, String roleName, String timeIn, int userId, String userName){
         this.mAvatarUrl = avatarUrl;
         this.mClass = studentClass;
         this.mEmail = email;
         this.mRoleName = roleName;
+        this.mTimeIn = timeIn;
         this.mUserId = userId;
         this.mUserName = userName;
+
+        this.mUserId = userId;
     }
 
     public String getImageUrl(){
@@ -31,6 +35,10 @@ public class Student {
 
     public String getRoleName(){
         return mRoleName;
+    }
+
+    public String getTimeIn(){
+        return mTimeIn;
     }
 
     public int getUserId(){

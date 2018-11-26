@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,12 +55,15 @@ public class StudentDetailsListAdapter extends RecyclerView.Adapter<StudentDetai
     }
 
     public class StudentViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.idTextView) TextView mStudentIdTextView;
         @BindView(R.id.studentImageView) ImageView mStudentImageView;
         @BindView(R.id.studentNameTextView) TextView mStudentNameTextView;
         @BindView(R.id.classTextView) TextView mClassTextView;
+        @BindView(R.id.emailTextView) TextView mEmailTextView;
+        @BindView(R.id.roleNameTextView) TextView mRoleNameTextView;
+
         @BindView(R.id.arrivalTime) TextView mArrivalTime;
         @BindView(R.id.arrivalDate) TextView mArrivalDate;
-        @BindView(R.id.detailsTextView) TextView mStudentId;
 
 
         private Context mContext;
@@ -70,9 +75,13 @@ public class StudentDetailsListAdapter extends RecyclerView.Adapter<StudentDetai
         }
 
         public void bindStudent(Student student){
+            mStudentIdTextView.setText("The Students ID is: "+String.valueOf(student.getUserId()));
             Picasso.with(mContext).load(student.getImageUrl()).into(mStudentImageView);
-            mStudentNameTextView.setText(student.getStudentName());
+            mStudentNameTextView.setText(student.getUserName());
             mClassTextView.setText(student.getClasses());
+            mEmailTextView.setText(student.getEmail());
+            mRoleNameTextView.setText(student.getRoleName());
+
 
             long currentTime= System.currentTimeMillis();
             Calendar cal=Calendar.getInstance();

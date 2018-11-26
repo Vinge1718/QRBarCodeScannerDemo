@@ -106,6 +106,7 @@ public class TimeConfirmation extends AppCompatActivity implements AdapterView.O
             String queryDate = mSelectedDateTextView.getText().toString();
             intent.putExtra("dateSelected", queryDate);
             intent.putExtra("classId", classId);
+            startActivity(intent);
         }
     }
 

@@ -4,13 +4,13 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10sp">
 
     <TextView
-        android:id="@+id/detailsTextView"
+        android:id="@+id/idTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="8sp"
         android:text="The student ID comes here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/studentImageView"
-        android:layout_width="230sp"
-        android:layout_height="200sp"
+        android:layout_width="359dp"
+        android:layout_height="179sp"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -27,26 +27,48 @@
         android:layout_width="match_parent"
         android:background="#ffffff"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10sp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/studentNameTextView"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:text="Student Name"
             android:textColor="@color/colorPrimary"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:layout_marginBottom="5sp"/>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Students Class"
             android:id="@+id/classTextView"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="italic"
-            android:padding="5dp"/>
+            android:padding="5sp"
+            android:layout_marginBottom="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Students Email"
+            android:id="@+id/emailTextView"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:padding="5sp"
+            android:layout_marginBottom="5sp"/>
+
+        <TextView
+            android:id="@+id/roleNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:text="Students Email"
+            android:textSize="15sp"
+            android:textStyle="italic" />
 
     </LinearLayout>
 
@@ -55,15 +77,17 @@
         android:layout_height="100sp">
 
         <TextView
+            android:id="@+id/arrivalTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/arrivalTime"
-            android:textSize="25sp"
-            android:textStyle="bold"
+            android:layout_alignTop="@+id/arrivalDate"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="39dp"
+            android:padding="5sp"
             android:text="Time"
             android:textColor="@color/colorPrimary"
-            android:layout_alignParentLeft="true"
-            android:padding="5sp"/>
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/arrivalDate"
@@ -72,9 +96,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginStart="263dp"
+            android:layout_marginLeft="263dp"
+            android:layout_marginBottom="30dp"
             android:padding="5sp"
             android:text="Date"
             android:textColor="@color/colorPrimary"

@@ -1,11 +1,13 @@
 package io.github.vinge1718.qrbarcodescannerdemo.services;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import io.github.vinge1718.qrbarcodescannerdemo.models.FinalStudent;
 import io.github.vinge1718.qrbarcodescannerdemo.models.Student;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -25,6 +27,14 @@ public class StudentService {
                 .url("https://moringa-attendance.herokuapp.com/api/v1/get-user/"+scanResult)
                 .build();
 
+        Call call = client.newCall(request);
+        call.enqueue(callback);
+    }
+
+    public static void filterAttendance(String classId, String queryDate, Callback callback){
+        Request request = new Request.Builder()
+                .url("https://moringa-attendance.herokuapp.com/api/v1/get-class-time/"+classId+"/"+queryDate)
+                .build();
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
@@ -62,11 +72,14 @@ public class StudentService {
             String jsonData = response.body().string();
             JSONObject users = new JSONObject(jsonData);
 
-            String imageUrl = users.getJSONObject("users").getString("image");
-            String studentName = users.getJSONObject("users").getString("name");
-            String studentClass = users.getJSONObject("users").getString("class");
+            String avatarUrl = users.getString("avatar_url"); //.getJSONObject("users")
+            String studentClass = users.getString("class_name"); //.getJSONObject("users")
+            String email = users.getString("email"); //.getJSONObject("users")
+            String roleName = users.getString("role_name"); //.getJSONObject("users")
+            int userId = users.getInt("user_id"); //.getJSONObject("users")
+            String userName = users.getString("username");//.getJSONObject("users")
 
-            Student student = new Student(imageUrl, studentName, studentClass);
+            Student student = new Student(avatarUrl, studentClass, email, roleName, userId, userName);
             studentDetails.add(student);
 
         } catch (IOException e){
@@ -78,5 +91,34 @@ public class StudentService {
         return studentDetails;
     }
 
+    public ArrayList processFilteredResults(Response response){
+        ArrayList<FinalStudent> filteredDetails = new ArrayList<>();
+
+        try{
+            String jsonData = response.body().string();
+            JSONArray filteredUsers = new JSONArray(jsonData);
+
+            for (int i = 0; i < filteredUsers.length(); i++){
+                JSONObject userDetailsJson = filteredUsers.getJSONObject(i);
+                String avatarUrl = userDetailsJson.getString("avatar_url");
+                String studentClass = userDetailsJson.getString("class_name");
+                String email = userDetailsJson.getString("email");
+                String roleName = userDetailsJson.getString("role_name");
+                String timeIn = userDetailsJson.getString("time_in");
+                int userId = userDetailsJson.getInt("user_id");
+                String userName = userDetailsJson.getString("username");
+
+                FinalStudent finalStudent = new FinalStudent(avatarUrl, studentClass, email, roleName, timeIn, userId, userName);
+                filteredDetails.add(finalStudent);
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return filteredDetails;
+    }
 
 }
